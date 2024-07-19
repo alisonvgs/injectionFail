@@ -9,7 +9,7 @@ from datetime import datetime
 # arquivo de armazenamento do log de falhas e reparos realizados para comparar com o monitoramento do ambiente
 nome_arq = 'fail_repair_log.csv'
 arq = open(nome_arq, 'a+')
-arq.write('Reparo;'+datetime.now().strftime('%d/%m/%Y %H:%M:%S')+';''\n')
+arq.write('Repair;'+datetime.now().strftime('%d/%m/%Y %H:%M:%S')+';''\n')
 arq.close()
 
 # inicializacao de variavel. Tempos de down (quando falha) e up (quando e reparado)
@@ -71,13 +71,13 @@ def control(a,b,c):
 def main():
     # Tempos acumulados para o calculo de disponbilidade
     try:
-        print('Inicio: ' + datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+        print('Start: ' + datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
         t0 = Thread(target=control, args=(blocks[0]))
         t0.start()
         t1 = Thread(target=control, args=(blocks[1]))
         t1.start()
     except KeyboardInterrupt as e:
-        print ('Fim: ' + datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
+        print ('End: ' + datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
         
 
 if __name__ == '__main__':
